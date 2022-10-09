@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # デフォルトだとログイン後はrootパスに飛ぶ。
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
