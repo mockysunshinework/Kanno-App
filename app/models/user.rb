@@ -1,10 +1,15 @@
 class User < ApplicationRecord
   # validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 100 }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 100 },
+                    format: { with: VALID_EMAIL_REGEX }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :omniauthable,
+        #  deviseのバリデーションをなくす場合は、:validatableを消す（またはコメントアウトする）。deviseのバリデーション機能を使う場合は:validatableを記述する。
+         :validatable, 
          omniauth_providers: %i[line]
 
   # 以下を追加
