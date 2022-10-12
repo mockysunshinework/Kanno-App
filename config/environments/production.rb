@@ -90,5 +90,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # デフォルトURLの設定
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # 忘備録22行目のURLでは以下のように設定するように記載あり。93行目または95行目どちらか設定する。
+  config.action_mailer.default_url_options = { host: "localhost", port: ENV.fetch("PORT", 3000) }
 end
