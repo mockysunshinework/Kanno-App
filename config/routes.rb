@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/index'
-
-  get 'users/show'
 
   # デフォルトだとログイン後はrootパスに飛ぶ。
   devise_for :users, controllers: {
