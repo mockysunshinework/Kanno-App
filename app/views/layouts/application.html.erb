@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <% flash.each do |message_type, msg| %>
+    <div class="alert alert-<%= message_type %>"><%= msg %></div>
+    <% end %>
     <% if flash[:notice] %>
       <p><%= flash[:notice] %></p>
     <% end %>
