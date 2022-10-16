@@ -12,12 +12,15 @@
     <% flash.each do |message_type, msg| %>
     <div class="alert alert-<%= message_type %>"><%= msg %></div>
     <% end %>
-    <% if flash[:notice] %>
-      <p><%= flash[:notice] %></p>
-    <% end %>
-    <% if flash[:alert] %>
-      <p><%= flash[:alert] %></p>
-    <% end %>
+
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= bootstrap_alert(key) %>">
+        <strong>
+          <%= value %>
+        </strong>
+      </div>
+      <% end %>
+   
     <%= render 'layouts/header' %>
     <div class="container">
       <%= yield %>
