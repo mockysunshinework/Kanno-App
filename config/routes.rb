@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     # get '/users', to: redirect('/users/sign_up')
   # end
 
-  resources :users, :only => [:index, :show]
+  resources :users, :only => [:index, :show, :destroy]
 
  
 

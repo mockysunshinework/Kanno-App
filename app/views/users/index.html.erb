@@ -15,28 +15,24 @@
         <% @users.each do |user| %>
         <tr>
           <td><%= link_to user.name,user_path(user) %>
-            <%
-=begin%>
- <% if user.admin? %>
-            <span class="label label-primary label-user-division">管理者</span>
-            <% else %> 
-<%
-=end%>
-            <span class="label label-success label-user-division">一般</span>
-            <%
-=begin%>
- <% end %> 
-<%
-=end%>
+          	<% if user.admin? %>
+            	<span class="label label-primary label-user-division">管理者</span>
+          	<% else %> 
+            	<span class="label label-success label-user-division">一般</span>
+					 	<% end %>
           </td>
           <td>
-            <%
+          <%
 =begin%>
- <% if current_user.admin? && !current_user?(user) %>
+ <% if current_user.admin? && !current_user?(user) %> 
+<%
+=end%>
             <%= link_to "削除", user_path(user), method: :delete,
             data: {confirm:"#{user.name}を削除します。よろしいですか？"},
             class:"btn btn-danger btn-sm pull-right" %>
-            <% end %> 
+          <%
+=begin%>
+ <% end %>  
 <%
 =end%>
           </td>
