@@ -1,19 +1,26 @@
 <% provide(:title, @user.name) %>
-<div>
-  <table class="table table-bordered table-condensed user-table">
-    <tr>
-      <td>時間管理表</td>
-      <td>指定勤務時間</td>
-      <td>基本時間</td>
-      <td>月初日</td>
-    </tr>
-
-    <tr>
-      <td>所属</td>
-      <td>名前：<%= @user.name %></td>
-      <td>出勤日数</td>
-      <td>月末日 嫌な予感がする！
-      </td>
-    </tr>
-  </table>
+<h1>プロフィール</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <table class="table table-bordered" id="table-user">
+      <tbody>
+        <tr>
+          <th class="active col-md-3"><%= User.human_attribute_name :id %></th>
+          <td class="col-md-9"><%= @user.id %></td>
+        </tr>
+        <tr>
+          <th class="active"><%= User.human_attribute_name :name %></th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr> 
+          <th class="active"><%= User.human_attribute_name :email %></th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th class="active"><%= User.human_attribute_name :created_at %></th>
+          <td><%= l(@user.created_at, format: :long) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>    
 </div>
