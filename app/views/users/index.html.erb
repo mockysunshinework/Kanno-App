@@ -22,19 +22,13 @@
 					 	<% end %>
           </td>
           <td>
-          <%
-=begin%>
- <% if current_user.admin? && !current_user?(user) %> 
-<%
-=end%>
+          
+ 					<% if current_user.admin? && !current_user?(user) %> 
+
             <%= link_to "削除", user_path(user), method: :delete,
             data: {confirm:"#{user.name}を削除します。よろしいですか？"},
             class:"btn btn-danger btn-sm pull-right" %>
-          <%
-=begin%>
- <% end %>  
-<%
-=end%>
+ 					<% end %>  
           </td>
         </tr>
         <% end %>
