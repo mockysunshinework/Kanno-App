@@ -1,2 +1,48 @@
 <h1>Users#index</h1>
 <p>Find me in app/views/users/index.html.erb</p>
+<% provide(:title,'Users') %>
+<h1>利用者一覧</h1>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <%= will_paginate %>
+    <table class="table table-condensed table-hover">
+      <thead>
+        <tr>
+          <th><%= User.human_attribute_name :name %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name,user_path(user) %>
+            <%
+=begin%>
+ <% if user.admin? %>
+            <span class="label label-primary label-user-division">管理者</span>
+            <% else %> 
+<%
+=end%>
+            <span class="label label-success label-user-division">一般</span>
+            <%
+=begin%>
+ <% end %> 
+<%
+=end%>
+          </td>
+          <td>
+            <%
+=begin%>
+ <% if current_user.admin? && !current_user?(user) %>
+            <%= link_to "削除", user_path(user), method: :delete,
+            data: {confirm:"#{user.name}を削除します。よろしいですか？"},
+            class:"btn btn-danger btn-sm pull-right" %>
+            <% end %> 
+<%
+=end%>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate %>
+</div>  
