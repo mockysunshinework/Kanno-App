@@ -15,6 +15,11 @@
     </div>
 
     <div class="field">
+      <%= f.label :depertment, class: "label-signup" %><br />
+      <%= f.text_field :depertment, autofocus: true, autocomplete: "name", class: "form-control" %>
+    </div>
+
+    <div class="field">
       <%= f.label :password, class: "label-signup" %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
