@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root "static_pages#top"
   # デフォルトだとログイン後はrootパスに飛ぶ。
   devise_for :users, controllers: {
     registrations: 'users/registrations',
