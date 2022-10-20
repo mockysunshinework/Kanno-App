@@ -19,8 +19,9 @@ Rails.application.routes.draw do
     # get '/users', to: redirect('/users/sign_up')
   # end
 
-  resources :users, :only => [:index, :show, :destroy]
-
+  resources :users, :only => [:index, :show, :destroy] do
+    resources :tasks
+  end
  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
