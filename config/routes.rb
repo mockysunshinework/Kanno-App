@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'tasks/index'
-
   root "static_pages#top"
   # デフォルトだとログイン後はrootパスに飛ぶ。
   devise_for :users, controllers: {
@@ -19,10 +17,13 @@ Rails.application.routes.draw do
     # get '/users', to: redirect('/users/sign_up')
   # end
 
-  resources :users, :only => [:index, :show, :destroy] do
-    resources :tasks
-  end
+  # resources :users, :only => [:index, :show, :destroy] do
+    # resources :tasks
+  # end
  
-
+  resources :users, :only => [:index, :show, :destroy] 
+  get '/users/:user_id/tasks', to:'tasks#index', as: :user_tasks
+  get '/users/:user_id/tasks/:id', to: 'tasks#show', as: :user_task
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
