@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   # end
  
   resources :users, :only => [:index, :show, :destroy] 
-  get '/users/:user_id/tasks', to:'tasks#index', as: :user_tasks
+  get '/users/:user_id/tasks/new', to: 'tasks#new'
+  post '/users/:user_id/tasks/create', to: 'tasks#create'
+  get '/users/:user_id/tasks', to: 'tasks#index', as: :user_tasks
   get '/users/:user_id/tasks/:id', to: 'tasks#show', as: :user_task
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
