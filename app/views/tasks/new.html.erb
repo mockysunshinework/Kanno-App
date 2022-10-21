@@ -6,13 +6,14 @@
     <%= form_with(model: @task, url: user_tasks_path(@user), local: true) do |f| %>
       <%= render partial: 'shared/error_messages', locals: { obj: @task } %>
     
-      <%= f.label :name, class: "label-form" %>
+      <%= f.label :name, class: "label-task" %>
       <%= f.text_field :name, class: "form-control" %>
       
-      <%= f.label :description, class: "label-form" %>
+      <%= f.label :description, class: "label-task" %>
       <%= f.text_area :description, rows: 5, class: "form-control" %>
       
-      <%= f.submit "新規登録",class: "btn btn-primary btn-lg btn-form" %> 
+      <%= f.submit "新規登録",class: "btn btn-primary btn-lg btn-task" %> 
     <% end %>
+    <%= link_to "タスク一覧画面に戻る", user_tasks_path %>
   </div>
 </div>
