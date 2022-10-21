@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   before_action :set_user
 
   def new
+    @task = Task.new
   end
 
   def create
@@ -30,7 +31,7 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.permit(:name, :description)
+      params.require(:task).permit(:name, :description)
     end
 
 
