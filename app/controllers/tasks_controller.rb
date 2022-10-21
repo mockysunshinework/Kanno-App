@@ -15,6 +15,10 @@ class TasksController < ApplicationController
     end
   end
   
+  def edit
+    @task = @user.tasks.find(params[:id])
+  end
+
   def index
     @tasks = @user.tasks.order(created_at: :desc)
   end
