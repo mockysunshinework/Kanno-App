@@ -16,7 +16,17 @@ class TasksController < ApplicationController
   end
   
   def edit
-    @task = @user.tasks.find(params[:id])
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_update_params)
+      @task.save
+      redirect_to user_tasks_url @user
+    else
+      render :edit
+    end
   end
 
   def index
@@ -35,6 +45,10 @@ class TasksController < ApplicationController
     end
 
     def task_params
+      params.require(:task).permit(:name, :description)
+    end
+
+    def task_update_params
       params.require(:task).permit(:name, :description)
     end
 
