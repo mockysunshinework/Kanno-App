@@ -12,8 +12,8 @@
       <%= f.label :description, class: "label-task-edit" %>
       <%= f.text_area :description, rows: 5, class: "form-control" %>
 
-      <%= f.label :finish_task, class: "label-task-edit" %>
-      <%= f.check_box :finished_task, id: "finished_task" %><br>
+      <%= f.label :status, class: "label-task-edit" %>
+      <%= f.select :status, ['未', '済'] %><br>
       
       <%= f.submit "変更する",class: "btn btn-primary btn-lg btn-task-edit" %> 
     <% end %>

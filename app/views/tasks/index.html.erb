@@ -10,6 +10,7 @@
           <th><%= Task.human_attribute_name :name %></th>
           <th><%= Task.human_attribute_name :description %></th>
           <th><%= Task.human_attribute_name :created_at %></th>
+          <th><%= Task.human_attribute_name :status %></th>
           <th></th>
         </tr>
       </thead>
@@ -19,7 +20,7 @@
           <td><%= link_to task.name,user_task_path(@user, task), id: "task-name" %></td> 
           <td><%= task.description %></td>
           <td><%= l(task.created_at, format: :long) %></td>
-          <td><%= task.finished_task %></td>
+          <td><%= task.status %></td>
           <td>
             <%= link_to "編集", edit_user_task_path(@user, task), class: "btn btn-success" %>
             <%= link_to "削除", user_task_path(@user, task), method: :delete, data: {confirm: "「#{task.name}」を削除します。よろしいですか？"}, class: "btn btn-danger" %>

@@ -17,8 +17,8 @@
           <td><%= @task.description %></td>
         </tr>
         <tr> 
-          <th class="active"><%= Task.human_attribute_name :finished_task %></th>
-          <td><%= @task.finished_task %></td>
+          <th class="active"><%= Task.human_attribute_name :status %></th>
+          <td><%= @task.status %></td>
         </tr>
         <tr>
           <th class="active"><%= Task.human_attribute_name :created_at %></th>
