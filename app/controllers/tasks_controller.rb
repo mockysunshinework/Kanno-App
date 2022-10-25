@@ -8,7 +8,7 @@ class TasksController < ApplicationController
   def create
     @task = @user.tasks.new(task_params)
     
-    # params[:task][:status] = "未"
+    params[:task][:status] = "未"
     if @task.save
   
       flash[:success] = "新規作成成功しました。"
