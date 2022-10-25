@@ -20,6 +20,10 @@
           <th class="active"><%= Task.human_attribute_name :status %></th>
           <td><%= @task.status %></td>
         </tr>
+        <tr> 
+          <th class="active"><%= Task.human_attribute_name :deadline %></th>
+          <td><%= l(@task.deadline, format: :middle) %></td>
+        </tr>
         <tr>
           <th class="active"><%= Task.human_attribute_name :created_at %></th>
           <td><%= l(@task.created_at, format: :long) %></td>
