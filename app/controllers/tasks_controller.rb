@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_user
+  before_action :correct_user, only: [:index, :edit, :new, :create]
 
   def new
     @task = Task.new
@@ -58,6 +59,17 @@ class TasksController < ApplicationController
 
     def task_update_params
       params.require(:task).permit(:name, :description, :status, :deadline)
+    end
+
+    def current_user?(user)
+      user == current_user
+    end
+
+    def correct_user
+      unless current_user?(@user)
+        flash[:danger] = "アクセスできません。"
+        redirect_to root_url 
+      end
     end
 
 

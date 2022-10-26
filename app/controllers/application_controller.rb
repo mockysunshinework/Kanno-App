@@ -15,6 +15,13 @@ class ApplicationController < ActionController::Base
     current_user.admin?
   end
 
+  def correct_user
+    unless current_user?(@user)
+      flash[:danger] = "アクセスできません。"
+      redirect_to root_url 
+    end
+  end
+
   protected
 
     def configure_permitted_parameters
