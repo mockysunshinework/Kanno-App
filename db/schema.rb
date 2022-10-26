@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20221020053131) do
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    
     t.string "status", default: "未"
     t.datetime "deadline"
     t.integer "user_id"

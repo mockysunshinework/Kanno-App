@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_user
-  before_action :correct_user, only: [:index, :edit, :new, :create]
+  before_action :correct_user, only: [:index, :edit, :new, :create, :show]
 
   def new
     @task = Task.new
