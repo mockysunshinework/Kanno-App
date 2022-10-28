@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
-    <%= form_with(model: @request, url: "#", local: true) do |f| %>
+    <%= form_with(model: @request, url: user_requests_path(@user), local: true) do |f| %>
       <%= render partial: 'shared/error_messages', locals: { obj: @request } %>
     
       <%= f.label :request_name, class: "label-request" %>

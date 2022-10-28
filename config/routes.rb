@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'requests/new'
-
   root "static_pages#top"
   # デフォルトだとログイン後はrootパスに飛ぶ。
   devise_for :users, controllers: {

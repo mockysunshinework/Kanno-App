@@ -1,23 +1,34 @@
 class RequestsController < ApplicationController
+  before_action :set_user
+
   def new
     @request = Request.new
   end
 
   def create
-    @request = Request.new(request_params)
+    @request = @user.requests.new(request_params)
     
     params[:request][:request_status] = "未"
-    if @request.save
-  
-      flash[:success] = "新規作成成功しました。"
-      redirect_to root_url
-    else
-      render :new
-    end
+      if @request.save
+        flash[:success] = "新規作成成功しました。"
+        redirect_to user_requests_url
+      else
+        render :new
+      end
+  end   
+
+  def index
+    @user = User.find(params[:user_id])
+    @requests = @user.requests.order(created_at: :desc)
   end
 
   private
-  def task_params
-    params.require(:task).permit(:request_name, :request_description, :request_status, :request_deadline)
+
+  def set_user 
+    @user = User.find(params[:user_id])
+  end
+
+  def request_params
+    params.require(:request).permit(:request_name, :request_description, :request_status, :request_deadline)
   end
 end
