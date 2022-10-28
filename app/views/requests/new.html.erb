@@ -1,0 +1,22 @@
+<% provide(:title, 'New Task') %>
+<h1>リクエスト新規作成</h1>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <%= form_with(model: @request, url: "#", local: true) do |f| %>
+      <%= render partial: 'shared/error_messages', locals: { obj: @request } %>
+    
+      <%= f.label :request_name, class: "label-request" %>
+      <%= f.text_field :request_name, class: "form-control" %>
+      
+      <%= f.label :request_description, class: "label-request" %>
+      <%= f.text_area :request_description, rows: 3, class: "form-control" %>
+
+      <%= f.label :request_deadline, class: "label-request" %>
+      <%= f.date_field :request_deadline, class: "form-control" %>      
+      
+      <%= f.submit "リクエスト送信",class: "btn btn-primary btn-lg btn-request" %> 
+    <% end %>
+    <%= link_to "タスク一覧画面に戻る", user_tasks_path %>
+  </div>
+</div>

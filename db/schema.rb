@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 20221027112133) do
   create_table "requests", force: :cascade do |t|
     t.string "request_name"
     t.string "request_description"
+    t.datetime "request_deadline"
+    t.string "request_status", default: "未"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
