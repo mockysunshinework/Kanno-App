@@ -6,12 +6,30 @@ User.create!( name: "Sample User",
     					password_confirmation: "password",
     					admin: true)
 
-10.times do |n|
-  name = Faker::Name.name
-  email = "sample-#{n + 1}@email.com"
-  password = "password"
-  User.create!(name: name,
-                email: email,
-                password: password,
-                password_confirmation: password)
-end
+User.create!( name: "Sample User",
+    					email: "sample-1@email.com",
+    					password: "password",
+    					password_confirmation: "password",
+    					department: "group1",
+              superior: true)
+
+User.create!( name: "Sample User",
+    					email: "sample-2@email.com",
+    					password: "password",
+    					password_confirmation: "password",
+    					department: "group1",
+              superior: true)
+
+User.create!( name: "Sample User",
+              email: "sample-3@email.com",
+              password: "password",
+              password_confirmation: "password",
+              department: "group2",
+              superior: true)             
+                
+User.create!( name: "Sample User",
+              email: "sample-4@email.com",
+              password: "password",
+              password_confirmation: "password",
+              department: "group2",
+              superior: true)                   
