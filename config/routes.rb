@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :tasks
     resources :requests do
       get 'edit_request'
+      patch 'update_request'      
     end
   end
  

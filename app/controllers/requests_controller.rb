@@ -22,6 +22,10 @@ class RequestsController < ApplicationController
     @requests = @user.requests.order(created_at: :desc)
   end
 
+  def edit_request
+    @request = Request.find(params[:request_id])
+  end
+
   private
 
   def set_user 
