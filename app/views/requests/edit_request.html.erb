@@ -8,6 +8,7 @@
                   <th><%= Request.human_attribute_name :request_description %></th>
                   <th><%= Request.human_attribute_name :request_status %></th>
                   <th><%= Request.human_attribute_name :request_deadline %></th>
+									<th><%= Request.human_attribute_name :partner_number %></th>
                 </tr>
               </thead>
       
@@ -18,7 +19,7 @@
                   <td><%= @request.request_status %></td>
                   <td><%= l(@request.request_deadline, format: :middle) %></td>
                   <td>
-                    <%#= f.collection_select(:overtime_boss, @superiors, :id, :name, { include_blank: "選択して下さい。" }) %> 
+                    <%= f.collection_select(:partner_number, @partners, :id, :name, { include_blank: "選択して下さい。" }) %> 
                   </td>
                 </tr>
               </tbody>

@@ -5,6 +5,7 @@ class CreateRequests < ActiveRecord::Migration[5.1]
       t.string :request_description
       t.datetime :request_deadline
       t.string :request_status, default: "未"
+      t.integer :partner_number      
 
       t.references :user, foreign_key: true
 

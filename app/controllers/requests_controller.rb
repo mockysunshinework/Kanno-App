@@ -24,6 +24,7 @@ class RequestsController < ApplicationController
 
   def edit_request
     @request = Request.find(params[:request_id])
+    @partners = User.where(partner: true).where(department: @user.department).where.not(id: @user.id)
   end
 
   private
