@@ -16,7 +16,7 @@
                   <td><%= @request.request_name %></td>
                   <td><%= @request.request_description %></td>
                   <td><%= @request.request_status %></td>
-                  <td><%= @request.request_deadline %></td>
+                  <td><%= l(@request.request_deadline, format: :middle) %></td>
                   <td>
                     <%#= f.collection_select(:overtime_boss, @superiors, :id, :name, { include_blank: "選択して下さい。" }) %> 
                   </td>
