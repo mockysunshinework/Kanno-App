@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @recieve_requests = Request.where(partner_number: @user.id).where(request_status: "未")
   end
 
   def destroy
