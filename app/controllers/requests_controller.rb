@@ -29,13 +29,15 @@ class RequestsController < ApplicationController
 
   def send_request
     @request = Request.find(params[:request_id])
+
     if send_request_params[:partner_number].blank?
       
      flash[:danger] = "必須です。"
    else
      @request.update(send_request_params)
      @partner = User.find(@request.partner_number)
-     flash[:success] = "#{@partner.name}に残業申請を行いました。"
+     flash[:success] = "#{@partner.name}にタスクを依頼しました。"
+     
    end
     redirect_to user_requests_url(@user)
   end
@@ -52,7 +54,7 @@ class RequestsController < ApplicationController
   end
 
   def send_request_params
-    params.require(:request).permit(:pertner_number)
+    params.require(:request).permit(:partner_number)
   end
 
 end
