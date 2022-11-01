@@ -27,6 +27,20 @@ class RequestsController < ApplicationController
     @partners = User.where(partner: true).where(department: @user.department).where.not(id: @user.id)
   end
 
+  def send_request
+    @request = Request.find(params[:request_id])
+    if send_request_params[:partner_number].blank?
+      
+     flash[:danger] = "必須です。"
+   else
+     @request.update(send_request_params)
+     @partner = User.find(@request.partner_number)
+     flash[:success] = "#{@partner.name}に残業申請を行いました。"
+   end
+    redirect_to user_requests_url(@user)
+  end
+
+
   private
 
   def set_user 
@@ -36,4 +50,9 @@ class RequestsController < ApplicationController
   def request_params
     params.require(:request).permit(:request_name, :request_description, :request_status, :request_deadline)
   end
+
+  def send_request_params
+    params.require(:request).permit(:pertner_number)
+  end
+
 end

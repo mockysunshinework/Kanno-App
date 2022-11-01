@@ -1,6 +1,6 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <%= form_with(model: @requests, url: "#", local: true, method: :patch) do |f| %>
+          <%= form_with(model: @request, url: user_request_send_request_path(@user, @request), local: true, method: :patch) do |f| %>
             <table class="table table-bordered table-condensed">
               <thead>
                 <tr>
