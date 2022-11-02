@@ -4,17 +4,18 @@
         
         <%= form_with(model: @user, url: "#", local: true, method: :patch) do |f| %>
         <% @requests.each do |id, requests| %>
-          <% user = User.find(id) %>
+           <% user = User.find(id) %> 
+
           <table class="table table-bordered table-condensed">
             <thead>
-                <tr>
-                  <h1><%= user.name %>からのリクエスト</h1>
-                  <th><%= Request.human_attribute_name :request_deadline %></th>
-                  <th><%= Request.human_attribute_name :request_name %></th>
-                  <th><%= Request.human_attribute_name :request_description %></th>
-                  <th><%= Request.human_attribute_name :request_status %></th>
-									<th><%= Request.human_attribute_name :request_change_status %></th>
-								</tr>
+              <tr>
+								<h1><%= user.name %>からのリクエスト</h1> 
+                <th><%= Request.human_attribute_name :request_deadline %></th>
+                <th><%= Request.human_attribute_name :request_name %></th>
+                <th><%= Request.human_attribute_name :request_description %></th>
+                <th><%= Request.human_attribute_name :request_status %></th>
+								<th><%= Request.human_attribute_name :request_change_status %></th>
+							</tr>
               </thead>
               <tbody>
                 <% requests.each do |request| %>
@@ -29,25 +30,18 @@
                 <%= f.fields_for "requests[]", request do |item| %>
                 <tr>
                   <td><%= l(request.request_deadline, format: :short) %></td>
-                  <%
-=begin%>
- <td class="<%#= day_of_week_color %>"><%#= $days_of_the_week[day.worked_on.wday] %></td> 
-<%
-=end%>
                   <td><%= request.request_name %></td>
                   <td><%= request.request_description %></td>
                   <td>
-                    <%= item.select :overtime_request_status, ['未', '実施済み'] %>
+                    <%= item.select :request_status, ['未', '実施済み'] %>
                   </td>
-                  <td><%= item.check_box :change_status %></td>
-                  <%# link_to のリンク先を別タブで表示させる。下の埋め込みRuby内、"文字列", "リンク先URL",の後に「target: :_blank, rel: "noopener noreferrer"」を記述する %>
-                  <td class="center"><%= link_to "確認", user_path(user, date: day.worked_on.beginning_of_month),target: :_blank, rel: "noopener noreferrer", class: "btn btn-primary" %></td>
+                  <td><%= item.check_box :request_change_status %></td>
                 </tr>
                 <% end %>
                 <% end %>
-              </tbody>
-              <% end %>
+              </tbody>              
             </table>
+						<% end %>
             <table>
               <div class="footer-button">
                 <%= f.submit yield(:button_text), class: "btn btn-lg btn-primary" %>

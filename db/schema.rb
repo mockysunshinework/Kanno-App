@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20221027112133) do
     t.datetime "request_deadline"
     t.string "request_status", default: "未"
     t.integer "partner_number"
+    t.boolean "request_change_status"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

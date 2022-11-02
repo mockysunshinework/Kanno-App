@@ -43,7 +43,7 @@ class RequestsController < ApplicationController
   end
 
   def check_requests
-    @requests = Request.where(partner_number: @user.id).where(request_status: "未")
+    @requests = Request.where(partner_number: @user.id).where(request_status: "未").order(:request_deadline).group_by(&:user_id)
   end
 
   private
