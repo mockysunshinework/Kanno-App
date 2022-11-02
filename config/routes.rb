@@ -21,7 +21,12 @@ Rails.application.routes.draw do
     resources :tasks
     resources :requests do
       get 'edit_request'
-      patch 'send_request'      
+      patch 'send_request'
+      get 'check_requests'
+      
+      collection do
+        patch 'finish_requests'      
+      end
     end
   end
  

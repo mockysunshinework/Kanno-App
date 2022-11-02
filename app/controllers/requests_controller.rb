@@ -42,6 +42,9 @@ class RequestsController < ApplicationController
     redirect_to user_requests_url(@user)
   end
 
+  def check_requests
+    @requests = Request.where(partner_number: @user.id).where(request_status: "未")
+  end
 
   private
 
