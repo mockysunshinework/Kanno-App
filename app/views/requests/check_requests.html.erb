@@ -2,7 +2,7 @@
         <div class="col-md-10 col-md-offset-1">
 
         
-        <%= form_with(model: @user, url: "#", local: true, method: :patch) do |f| %>
+        <%= form_with(model: @user, url: finish_requests_user_requests_path(@user), local: true, method: :patch) do |f| %>
         <% @requests.each do |id, requests| %>
            <% user = User.find(id) %> 
 

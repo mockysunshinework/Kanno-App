@@ -46,6 +46,27 @@ class RequestsController < ApplicationController
     @requests = Request.where(partner_number: @user.id).where(request_status: "未").order(:request_deadline).group_by(&:user_id)
   end
 
+  def finish_requests
+    c1 = 0
+    ActiveRecord::Base.transaction do # トランザクションを開始します。
+      finish_request_params.each do |id, item|
+        request = Request.find(id)
+        if item[:request_change_status] == "1"
+          if item[:request_status] == "未"
+            item[:request_change_status] = nil
+          end
+          c1 += 1
+          request.update!(item)
+        end
+      end
+    end
+    flash[:success] = "#{c1}件のリクエストを実施済みに変更しました。"
+    redirect_to @user
+  rescue ActiveRecord::RecordInvalid # トランザクションによるエラーの分岐です。
+    flash[:danger] = "無効な入力データがあった為、リクエスト処理をキャンセルしました。"
+    redirect_to @user   
+  end
+
   private
 
   def set_user 
@@ -54,10 +75,14 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:request_name, :request_description, :request_status, :request_deadline)
-  end
+  end   
 
   def send_request_params
     params.require(:request).permit(:partner_number)
+  end
+
+  def finish_request_params
+    params.require(:user).permit(requests: [:request_status, :request_change_status])[:requests]
   end
 
 end

@@ -16,7 +16,7 @@
 								<tr>
                   <td><%= @request.request_name %></td>
                   <td><%= @request.request_description %></td>
-                  <td><%= @request.request_status %></td>
+                  <td><%= f.select(:request_status, ["依頼前", "依頼", "依頼取り下げ"], { include_blank: '選択してください'}) %></td>
                   <td><%= l(@request.request_deadline, format: :middle) %></td>
                   <td>
                     <%= f.collection_select(:partner_number, @partners, :id, :name, { include_blank: "選択して下さい。" }) %> 

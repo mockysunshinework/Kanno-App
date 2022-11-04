@@ -20,7 +20,7 @@
         <tr>
           <td><%= link_to task.name,user_task_path(@user, task), id: "task-name" %></td> 
           <td><%= task.description %></td>
-          <td><%= l(task.created_at, format: :long) %></td>
+          <td><%= l(task.created_at, format: :middle) %></td>
           <td><%= task.status %></td>
           <td><%= l(task.deadline, format: :middle) %></td>
           <td>

@@ -17,7 +17,23 @@
       </thead>
       <tbody>
         <% @requests.each do |request| %>
-        <tr>
+        <% if request.request_status == "実施済み" %>
+				<tr class="bg-success">
+          <td><%= request.request_name %><%#= link_to request.name,user_task_path(@user, task), id: "task-name" %></td> 
+          <td><%= request.request_description %></td>
+          <td><%= l(request.created_at, format: :long) %></td>
+          <td><%= request.request_status %></td>
+          <td><%= l(request.request_deadline, format: :middle) %></td>
+          <td>
+          	<%#= link_to "リクエスト申請", user_request_edit_request_path(@user, request), class: "btn btn-primary" if current_user == @user %>
+        	</td>
+          <td>
+            <%#= link_to "編集", edit_user_task_path(@user, task), class: "btn btn-success" %>
+            <%#= link_to "削除", user_task_path(@user, task), method: :delete, data: {confirm: "「#{task.name}」を削除します。よろしいですか？"}, class: "btn btn-danger" %>
+          </td>
+        </tr>
+				<% else %>
+				<tr>
           <td><%= request.request_name %><%#= link_to request.name,user_task_path(@user, task), id: "task-name" %></td> 
           <td><%= request.request_description %></td>
           <td><%= l(request.created_at, format: :long) %></td>
@@ -31,6 +47,7 @@
             <%#= link_to "削除", user_task_path(@user, task), method: :delete, data: {confirm: "「#{task.name}」を削除します。よろしいですか？"}, class: "btn btn-danger" %>
           </td>
         </tr>
+				<% end %>
         <% end %>
       </tbody>
     </table>
