@@ -27,5 +27,8 @@
     </table>
   </div>  
 </div>
-<div class="center"><%#= link_to "リクエスト申請","#" ,class: "btn btn-lg btn-primary" %></div>  
+<div class="center">
+  <%= link_to "タスク一覧",user_tasks_path(@user) ,class: "btn btn-lg btn-primary" %>
+  <%= link_to "リクエスト一覧",user_requests_path(@user) ,class: "btn btn-lg btn-success" %>
+</div>  
 
