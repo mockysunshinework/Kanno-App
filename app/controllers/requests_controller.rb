@@ -9,6 +9,7 @@ class RequestsController < ApplicationController
     @request = @user.requests.new(request_params)
     
     params[:request][:request_status] = "未"
+
       if @request.save
         flash[:success] = "新規作成成功しました。"
         redirect_to user_requests_url
