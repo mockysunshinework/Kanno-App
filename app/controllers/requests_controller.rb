@@ -29,7 +29,6 @@ class RequestsController < ApplicationController
 
   def send_request
     @request = Request.find(params[:request_id])
-
     if send_request_params[:partner_number].blank?
       
      flash[:danger] = "必須です。"
