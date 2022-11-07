@@ -37,6 +37,7 @@ class RequestsController < ApplicationController
     if send_request_params[:partner_number].blank?
       
      flash[:danger] = "必須です。"
+     redirect_to user_request_edit_request_path(@user, @request) and return
    else
      @request.update(send_request_params)
      @partner = User.find(@request.partner_number)

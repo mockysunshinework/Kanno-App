@@ -20,9 +20,9 @@
         <tr>
           <td><%= link_to task.name,user_task_path(@user, task), id: "task-name" %></td> 
           <td><%= task.description %></td>
-          <td><%= l(task.created_at, format: :middle) %></td>
+          <td><%= l(task.created_at, format: :short) %></td>
           <td><%= task.status %></td>
-          <td><%= l(task.deadline, format: :middle) %></td>
+          <td><%= l(task.deadline, format: :short, default: '-') %></td>
           <td>
             <%= link_to "編集", edit_user_task_path(@user, task), class: "btn btn-success" %>
             <%= link_to "削除", user_task_path(@user, task), method: :delete, data: {confirm: "「#{task.name}」を削除します。よろしいですか？"}, class: "btn btn-danger" %>
