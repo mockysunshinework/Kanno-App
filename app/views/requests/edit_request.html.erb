@@ -17,7 +17,7 @@
                   <td><%= @request.request_name %></td>
                   <td><%= @request.request_description %></td>
                   <td><%= @request.request_status %></td>
-                  <td><%= l(@request.request_deadline, format: :middle) %></td>
+                  <td><%= f.date_field :request_deadline, class: "form-control" %> </td>
                   <td>
                     <%= f.collection_select(:partner_number, @partners, :id, :name, { include_blank: "選択して下さい。" }) %> 
                   </td>

@@ -23,7 +23,7 @@
           <td><%= request.request_description %></td>
           <td><%= l(request.created_at, format: :long) %></td>
           <td><%= request.request_status %></td>
-          <td><%= l(request.request_deadline, format: :middle) %></td>
+          <td><%= request.request_deadline %></td>
           <td>
           	<%#= link_to "リクエスト申請", user_request_edit_request_path(@user, request), class: "btn btn-primary" if current_user == @user %>
         	</td>
@@ -38,7 +38,7 @@
           <td><%= request.request_description %></td>
           <td><%= l(request.created_at, format: :long) %></td>
           <td><%= request.request_status %></td>
-          <td><%= l(request.request_deadline, format: :middle) %></td>
+          <td><% request.request_deadline %><%#= l(request.request_deadline, format: :middle) %></td>
           <td>
 					<% if request.partner_number.nil? %>
           	<%= link_to "リクエスト依頼", user_request_edit_request_path(@user, request), class: "btn btn-primary" if current_user == @user %>
