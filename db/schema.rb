@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20221027112133) do
     t.string "name"
     t.string "description"
     t.string "status", default: "未"
-    t.datetime "deadline"
+    t.date "deadline"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

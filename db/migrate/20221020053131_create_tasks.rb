@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :description
       t.string :status, default: "未"
-      t.datetime :deadline
+      t.date :deadline
       t.references :user, foreign_key: true
 
       t.timestamps
