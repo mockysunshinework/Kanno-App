@@ -72,6 +72,13 @@ class RequestsController < ApplicationController
     redirect_to @user   
   end
 
+  def destroy
+    @request = Request.find(params[:id])
+    @request.destroy
+    flash[:success] = "リクエストの削除に成功しました。"
+      redirect_to user_requests_url @user
+  end
+
   private
 
   def set_user 

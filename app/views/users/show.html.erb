@@ -3,6 +3,9 @@
 <% if @recieve_requests.count > 0 %>
   <h1><%= link_to "#{@recieve_requests.count}件のリクエストがあります", user_request_check_requests_path(@user, @requests), class: "btn btn-lg btn-danger" %></h1>
 <% end %>
+<% if @recieve_finished_requests.count > 0 %>
+  <h2 class="text-success"><%= "#{@recieve_finished_requests.count}件のリクエスト完了通知があります。リクエスト一覧から一覧から確認して下さい。" %></h1>
+<% end %>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <table class="table table-bordered" id="table-user">
