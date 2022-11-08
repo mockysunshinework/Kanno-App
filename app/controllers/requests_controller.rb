@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
   before_action :set_user
+  before_action :correct_user
 
   def new
     @request = Request.new
