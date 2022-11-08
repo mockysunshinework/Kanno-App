@@ -26,6 +26,9 @@ ja:
         unlock_token: ロック解除用トークン
         updated_at: 更新日
         name: 名前
+        # 以下、私が追加したカラム
+        department: 所属
+        partner: リクエスト機能を利用する場合はチェックをつけて下さい。
     models:
       user: ユーザ
   devise:

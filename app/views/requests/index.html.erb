@@ -10,7 +10,6 @@
           <th><%= Task.human_attribute_name :request_name %></th>
           <th><%= Task.human_attribute_name :request_description %></th>
           <th><%= Task.human_attribute_name :created_at %></th>
-          <th><%#= Task.human_attribute_name :request_status %></th>
           <th><%= Task.human_attribute_name :request_deadline %></th>
           <th></th>
         </tr>
@@ -22,7 +21,6 @@
           <td><%= request.request_name %><%#= link_to request.name,user_task_path(@user, task), id: "task-name" %></td> 
           <td><%= request.request_description %></td>
           <td><%= l(request.created_at, format: :long) %></td>
-          <td><%#= request.request_status %></td>
           <td><%= request.request_deadline %></td>
           <td>リクエスト完了
         	</td>
@@ -35,7 +33,6 @@
           <td><%= request.request_name %><%#= link_to request.name,user_task_path(@user, task), id: "task-name" %></td> 
           <td><%= request.request_description %></td>
           <td><%= l(request.created_at, format: :long) %></td>
-          <td><%#= request.request_status %></td>
           <td><%= request.request_deadline %><%#= l(request.request_deadline, format: :middle) %></td>
           <td>
 					<% if request.partner_number.nil? %>
