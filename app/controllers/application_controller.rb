@@ -15,10 +15,21 @@ class ApplicationController < ActionController::Base
     current_user.admin?
   end
 
+  def current_user?(user)
+    user == current_user
+  end
+
   def correct_user
     unless current_user?(@user)
       flash[:danger] = "アクセスできません。"
       redirect_to root_url 
+    end
+  end
+
+  def admin_user
+    unless current_user.admin?
+      flash[:danger] = "アクセス権限がありません。"
+      redirect_to root_url
     end
   end
 
