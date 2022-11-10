@@ -22,7 +22,7 @@
         </tr>
         <tr> 
           <th class="active"><%= Task.human_attribute_name :deadline %></th>
-          <td><%= l(@task.deadline, format: :short) %></td>
+          <td><%= l(@task.deadline, format: :short, default: '-') %></td>
         </tr>
         <tr>
           <th class="active"><%= Task.human_attribute_name :created_at %></th>

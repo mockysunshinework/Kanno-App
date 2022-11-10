@@ -10,14 +10,19 @@ class TasksController < ApplicationController
     @task = @user.tasks.new(task_params)
     
     params[:task][:status] = "未"
-
-    if params[:task][:deadline].to_date < Date.current
-      flash[:danger] = "期日は本日以降の日付にして下さい"
-      render :new
-    else
+    if params[:task][:deadline].nil? || params[:task][:deadline].blank?
       @task.save
       flash[:success] = "新規作成成功しました。"
       redirect_to user_tasks_url
+    else      
+      if params[:task][:deadline].to_date < Date.current
+        flash[:danger] = "期日は本日以降の日付にして下さい"
+        render :new
+      else
+        @task.save
+        flash[:success] = "新規作成成功しました。"
+        redirect_to user_tasks_url
+      end
     end
   end
 
