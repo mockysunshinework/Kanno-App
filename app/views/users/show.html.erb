@@ -32,7 +32,9 @@
   </div>  
 </div>
 <div class="center">
-  <%= link_to "タスク一覧",user_tasks_path(@user) ,class: "btn btn-lg btn-primary #{ 'disabled' if current_user.admin } " %>
-  <%= link_to "リクエスト一覧",user_requests_path(@user) ,class: "btn btn-lg btn-success #{ 'disabled' if current_user.admin } " %>
+  <% if current_user.admin? && current_user == @user %>
+  <%= link_to "タスク一覧",user_tasks_path(@user) ,class: "btn btn-lg btn-primary" %>
+  <%= link_to "リクエスト一覧",user_requests_path(@user) ,class: "btn btn-lg btn-success" %>
+  <% end %>
 </div>  
 
