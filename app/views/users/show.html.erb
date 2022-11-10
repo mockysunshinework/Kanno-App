@@ -1,10 +1,12 @@
 <% provide(:title, @user.name) %>
 <h1><%= @user.name %>さんの My Page</h1>
-<% if @recieve_requests.count > 0 %>
-  <h1><%= link_to "#{@recieve_requests.count}件のリクエストがあります", user_request_check_requests_path(@user, @requests), class: "btn btn-lg btn-danger #{ 'disabled' if current_user.admin } " %></h1>
-<% end %>
-<% if @recieve_finished_requests.count > 0 %>
-  <h2 class="text-success"><%= "#{@recieve_finished_requests.count}件のリクエスト完了通知があります。リクエスト一覧から一覧から確認して下さい。" %></h1>
+<% if current_user.admin? && current_user == @user %>
+  <% if @recieve_requests.count > 0 %>
+    <h1><%= link_to "#{@recieve_requests.count}件のリクエストがあります", user_request_check_requests_path(@user, @requests), class: "btn btn-lg btn-danger" %></h1>
+  <% end %>
+  <% if @recieve_finished_requests.count > 0 %>
+    <h2 class="text-success"><%= "#{@recieve_finished_requests.count}件のリクエスト完了通知があります。リクエスト一覧から一覧から確認して下さい。" %></h1>
+  <% end %>
 <% end %>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -32,7 +34,7 @@
   </div>  
 </div>
 <div class="center">
-  <% if current_user.admin? && current_user == @user %>
+  <% unless current_user.admin? && current_user != @user %>
   <%= link_to "タスク一覧",user_tasks_path(@user) ,class: "btn btn-lg btn-primary" %>
   <%= link_to "リクエスト一覧",user_requests_path(@user) ,class: "btn btn-lg btn-success" %>
   <% end %>
