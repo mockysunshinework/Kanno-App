@@ -15,6 +15,9 @@
       <%= f.label :status, class: "label-task-edit" %>
       <%= f.select :status, ['未', '済'] %><br>
       
+      <%= f.label :deadline, class: "label-task-edit" %>
+      <%= f.date_field :deadline, class: "form-control" %>
+
       <%= f.submit "変更する",class: "btn btn-primary btn-lg btn-task-edit" %> 
     <% end %>
     <%= link_to "タスク一覧画面に戻る", user_tasks_path %>

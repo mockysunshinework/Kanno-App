@@ -19,10 +19,14 @@
       <%= f.text_field :department, autofocus: true, autocomplete: "email", class: "form-control" %>
     </div>
 
-    <div class="field">
+    <%
+=begin%>
+ <div class="field">
       <%= f.label :partner, class: "label-signup" %><br />
       <%= f.check_box :partner, id: "partner" %> <%# もともと記述されていたコードの残骸です ⇨ autofocus: true, autocomplete: "email", class: "form-control" %>
-    </div>
+    </div> 
+<%
+=end%>
 
     <div class="field">
       <%= f.label :password, class: "label-signup" %>
