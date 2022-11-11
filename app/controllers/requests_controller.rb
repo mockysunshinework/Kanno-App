@@ -32,15 +32,27 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
   end
 
+  # def update
+  #   @request = Request.find(params[:id])
+  #   if params[:request][:request_deadline].blank? || params[:request][:request_deadline].to_date < Date.current
+  #     flash[:danger] = "本日以降の期日を入力して下さい。"
+  #     redirect_to edit_user_request_path(@user, @request) and return
+  #   else
+  #     @request.update(request_params)
+  #     flash[:success] = "リクエストを変更しました"
+  #     redirect_to user_requests_path(@user)
+  #   end
+  # end
+
   def update
     @request = Request.find(params[:id])
-    if params[:request][:request_deadline].blank? || params[:request][:request_deadline].to_date < Date.current
-      flash[:danger] = "本日以降の期日を入力して下さい。"
-      redirect_to edit_user_request_path(@user, @request) and return
-    else
+    unless params[:request][:request_deadline].blank? || params[:request][:request_deadline].to_date < Date.current
       @request.update(request_params)
       flash[:success] = "リクエストを変更しました"
       redirect_to user_requests_path(@user)
+    else
+      flash[:danger] = "本日以降の期日を入力して下さい。"
+      redirect_to edit_user_request_path(@user, @request)     
     end
   end
 

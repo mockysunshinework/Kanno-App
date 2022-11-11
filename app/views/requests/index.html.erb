@@ -20,7 +20,7 @@
 				<tr class="bg-success">
           <td><%= request.request_name %><%#= link_to request.name,user_task_path(@user, task), id: "task-name" %></td> 
           <td><%= request.request_description %></td>
-          <td><%= l(request.created_at, format: :long) %></td>
+          <td><%= l(request.created_at, format: :short) %></td>
           <td><%= request.request_deadline %></td>
           <td>リクエスト完了
         	</td>
@@ -32,7 +32,7 @@
 				<tr>
           <td><%= request.request_name %><%#= link_to request.name,user_task_path(@user, task), id: "task-name" %></td> 
           <td><%= request.request_description %></td>
-          <td><%= l(request.created_at, format: :long) %></td>
+          <td><%= l(request.created_at, format: :short) %></td>
           <td><%= request.request_deadline %><%#= l(request.request_deadline, format: :middle) %></td>
           <td>
 					<% if request.partner_number.nil? %>
