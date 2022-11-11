@@ -1,0 +1,25 @@
+<% provide(:title, 'Edit Request') %>
+<h1>リクエスト編集</h1>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <%= form_with(model: @request, url: user_request_path(@user, @request), local: true, method: :patch) do |f| %>
+      <%= render partial: 'shared/error_messages', locals: { obj: @request } %>
+    
+      <%= f.label :request_name, class: "label-request-edit" %>
+      <%= f.text_field :request_name, class: "form-control" %>
+      
+      <%= f.label :request_description, class: "label-request-edit" %>
+      <%= f.text_area :request_description, rows: 5, class: "form-control" %>
+
+      <%#= f.label :request_status, class: "label-request-edit" %>
+      <%#= f.select :request_status, ['未', '済'] %><br>
+      
+      <%= f.label :request_deadline, class: "label-request-edit" %>
+      <%= f.date_field :request_deadline, class: "form-control" %>
+
+      <%= f.submit "変更する",class: "btn btn-primary btn-lg btn-request-edit" %> 
+    <% end %>
+    <%= link_to "リクエスト一覧画面に戻る", user_requests_path %>
+  </div>
+</div>

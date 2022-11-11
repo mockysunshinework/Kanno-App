@@ -42,8 +42,8 @@
 					<% end %>
         	</td>
           <td>
-            <%#= link_to "編集", edit_user_task_path(@user, task), class: "btn btn-success" %>
-            <%#= link_to "削除", user_task_path(@user, task), method: :delete, data: {confirm: "「#{task.name}」を削除します。よろしいですか？"}, class: "btn btn-danger" %>
+            <%= link_to "変更", edit_user_request_path(@user, request), class: "btn btn-success" %>
+            <%= link_to "削除", user_request_path(@user, request), method: :delete, data: {confirm: "「#{request.request_name}」を削除します。よろしいですか？"}, class: "btn btn-danger" %>
           </td>
         </tr>
 				<% end %>
