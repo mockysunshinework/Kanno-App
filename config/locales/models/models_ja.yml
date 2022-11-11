@@ -31,5 +31,6 @@ ja:
           request_status: 状態
           request_deadline: 期日
           partner_number: 依頼先
+          request_change_status: 完了
           created_at: 作成日
           updated_at: 更新日

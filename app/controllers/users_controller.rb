@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @requests = @user.requests.where.not(request_status: nil)
     @recieve_requests = Request.where(partner_number: @user.id).where(request_status: "未")
-    @recieve_finished_requests = Request.where.not(partner_number: @user.id).where(request_status: "実施済み").where(request_change_status: true)
+    @recieve_finished_requests = @user.requests.where.not(partner_number: @user.id).where(request_status: "実施済み").where(request_change_status: true)
   end
 
   def destroy

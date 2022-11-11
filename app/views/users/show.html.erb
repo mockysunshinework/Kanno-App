@@ -1,6 +1,6 @@
 <% provide(:title, @user.name) %>
 <h1><%= @user.name %>さんの My Page</h1>
-<% if current_user.admin? && current_user == @user %>
+<% unless current_user.admin? && @user != current_user %>
   <% if @recieve_requests.count > 0 %>
     <h1><%= link_to "#{@recieve_requests.count}件のリクエストがあります", user_request_check_requests_path(@user, @requests), class: "btn btn-lg btn-danger" %></h1>
   <% end %>
