@@ -19,9 +19,15 @@
               <li class="active dropdown-header">タスク</li>
               <li><%= link_to "タスク一覧", user_tasks_path(current_user) %></li>
               <li><%= link_to "タスク新規作成", new_user_task_path(current_user) %></li>
-              <li class="active dropdown-header">リクエスト</li>
-              <li><%= link_to "リクエスト一覧", user_requests_path(current_user) %></li>
-              <li><%= link_to "リクエスト新規作成", new_user_request_path(current_user) %></li>              
+                <%# if current_user.department.present? %>
+                <li class="active dropdown-header">リクエスト</li>
+                <% if current_user.department.present? %>     
+                  <li><%= link_to "リクエスト一覧", user_requests_path(current_user) %></li>
+                  <li><%= link_to "リクエスト新規作成", new_user_request_path(current_user) %></li>
+                <% else %>
+                  <li><%= link_to "リクエスト一覧", user_requests_path(current_user), class: "btn disabled" %></li>
+                  <li><%= link_to "リクエスト新規作成", new_user_request_path(current_user), class: "btn disabled" %></li>
+                <% end %>              
               <li class="divider"></li>
               <li>
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

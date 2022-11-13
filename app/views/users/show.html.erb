@@ -36,7 +36,11 @@
 <div class="center">
   <% unless current_user.admin? && current_user != @user %>
   <%= link_to "タスク一覧",user_tasks_path(@user) ,class: "btn btn-lg btn-primary" %>
-  <%= link_to "リクエスト一覧",user_requests_path(@user) ,class: "btn btn-lg btn-success" %>
+    <% if current_user.department.present? %>    
+      <%= link_to "リクエスト一覧",user_requests_path(@user) ,class: "btn btn-lg btn-success" %>
+    <% else %>
+      <%= link_to "リクエスト一覧",user_requests_path(@user) ,class: "btn btn-lg btn-success disabled" %>
+    <% end %>
   <% end %>
 </div>  
 
