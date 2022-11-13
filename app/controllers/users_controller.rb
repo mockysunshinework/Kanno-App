@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   before_action :set_user, only: [:show, :destroy]
   before_action :admin_user, only: [:index, :destroy]
+  before_action :no_department_user, only: []
   # before_action :correct_user, only: [:show]
 
 
@@ -37,11 +38,6 @@ class UsersController < ApplicationController
       end
     end
 
-    def no_department_user
-      unless current_user.department.present?
-        flash[:danger] = "家族IDを設定してからアクセス可能です。"
-        redirect_to root_url
-      end
-    end         
+        
 
 end
