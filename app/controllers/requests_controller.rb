@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
   before_action :set_user
   before_action :correct_user
+  before_action :no_department_user
 
   def new
     @request = Request.new
@@ -126,4 +127,11 @@ class RequestsController < ApplicationController
     params.require(:user).permit(requests: [:request_status, :request_change_status])[:requests]
   end
 
+  def no_department_user
+    unless current_user.department.present?
+      flash[:warning] = "リクエスト機能は家族IDを設定してから利用可能です。"
+      redirect_to user_path(@user)
+    end
+  end 
+  
 end

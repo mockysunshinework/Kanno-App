@@ -37,4 +37,11 @@ class UsersController < ApplicationController
       end
     end
 
+    def no_department_user
+      unless current_user.department.present?
+        flash[:danger] = "家族IDを設定してからアクセス可能です。"
+        redirect_to root_url
+      end
+    end         
+
 end
