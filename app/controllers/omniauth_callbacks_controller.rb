@@ -16,8 +16,14 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @profile.set_values(@omniauth)
       sign_in(:user, @profile)
     end
-    flash[:notice] = "ログインしました"
-    redirect_to root_path
+    
+    if @profile.department.blank?
+      flash[:notice] = "所属IDを設定して下さい。所属ID未設定のままではリクエスト機能が利用できません。"
+      redirect_to edit_user_registration_path   
+    else
+      flash[:notice] = "ログインしました"
+      redirect_to root_path
+    end
   end
 
   def fake_email(uid, provider)
