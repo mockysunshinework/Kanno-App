@@ -11,18 +11,38 @@ class RequestsController < ApplicationController
     @request = @user.requests.new(request_params)
     
     params[:request][:request_status] = "未"
-    if params[:request][:request_deadline].to_date < Date.current
-      flash[:danger] = "期限が無効です。"
-      render :new
+    if @request.save
+      flash[:success] = "新規作成成功しました。"
+      redirect_to user_requests_url
     else
-      if @request.save
-        flash[:success] = "新規作成成功しました。"
-        redirect_to user_requests_url
-      else
-        render :new
-      end
+      render :new
     end
   end   
+
+# 以前に作成した自作のcreateアクション。ifやunlessが多く、見づらいため新しいアクションを作成してみる　
+  # def create
+  #   @request = @user.requests.new(request_params)
+    
+  #   params[:request][:request_status] = "未"
+  #   if params[:request][:request_name].present? && params[:request][:request_description].present?
+  #     unless params[:request][:request_deadline].nil? || params[:request][:request_deadline].blank?
+  #       if params[:request][:request_deadline].to_date < Date.current 
+  #         flash[:danger] = "本日以降の期日を設定して下さい。"
+  #         render :new
+  #       else
+  #         @request.save
+  #         flash[:success] = "新規作成成功しました。"
+  #         redirect_to user_requests_url
+  #       end
+  #     else
+  #       flash[:danger] = "本日以降の期日を設定して下さい。"
+  #       render :new
+  #     end
+  #   else
+  #     flash[:danger] = "リクエスト名とリクエスト詳細は入力必須です。"
+  #     render :new
+  #   end
+  # end   
 
   def index
     @user = User.find(params[:user_id])
@@ -47,15 +67,26 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
-    unless params[:request][:request_deadline].blank? || params[:request][:request_deadline].to_date < Date.current
-      @request.update(request_params)
+    if @request.update(request_params)
       flash[:success] = "リクエストを変更しました"
       redirect_to user_requests_path(@user)
     else
-      flash[:danger] = "本日以降の期日を入力して下さい。"
-      redirect_to edit_user_request_path(@user, @request)     
+     render :edit      
     end
   end
+
+  # createアクションの作り直しが成功したのとrequest.rbにうまく記述できたことを受けて、updateアクションを作り直す
+  # def update
+  #   @request = Request.find(params[:id])
+  #   unless params[:request][:request_deadline].blank? || params[:request][:request_deadline].to_date < Date.current
+  #     @request.update(request_params)
+  #     flash[:success] = "リクエストを変更しました"
+  #     redirect_to user_requests_path(@user)
+  #   else
+  #     flash[:danger] = "本日以降の期日を入力して下さい。"
+  #     redirect_to edit_user_request_path(@user, @request)     
+  #   end
+  # end
 
   def edit_request
     @request = Request.find(params[:request_id])
