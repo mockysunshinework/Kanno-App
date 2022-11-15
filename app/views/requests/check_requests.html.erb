@@ -1,3 +1,5 @@
+<% provide(:title, "リクエスト確認") %>
+<% provide(:button_text, "更新する") %> 
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
 
@@ -43,7 +45,7 @@
             </table>
 						<% end %>
             <table>
-              <div class="footer-button">
+              <div class="center footer-button">
                 <%= f.submit yield(:button_text), class: "btn btn-lg btn-primary" %>
               </div>
             </table>   
