@@ -97,7 +97,7 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:request_id])
     if send_request_params[:partner_number].blank?
       
-     flash[:danger] = "必須です。"
+     flash[:danger] = "依頼先を選択して下さい。"
      redirect_to user_request_edit_request_path(@user, @request) and return
    else
      @request.update(send_request_params)

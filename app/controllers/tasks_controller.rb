@@ -70,6 +70,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
+    flash[:success] = "削除に成功しました。"
       redirect_to user_tasks_url @user
   end
 
