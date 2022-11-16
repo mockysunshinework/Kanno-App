@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.7.6'
+
 gem 'rails',        '~> 5.1.6'
 gem 'rails-i18n' 
 gem 'faker'
@@ -20,7 +22,7 @@ gem 'dotenv-rails'
 gem 'omniauth', '~> 1.9.1'
 
 group :development, :test do
-  gem 'sqlite3'
+  gem 'sqlite3', '1.3.13'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
