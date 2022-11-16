@@ -33,4 +33,4 @@ User.create!( name: "テスト姫子",
               password: "password",
               password_confirmation: "password",
               department: "group_number2",
-              partner: true)                   
+              partner: true)
