@@ -15,7 +15,7 @@
             <ul class="dropdown-menu">
               <li class="active dropdown-header">ユーザー</li>
               <li><%= link_to "マイページ", user_path(current_user) %></li>
-              <li><%= link_to "設定", edit_user_registration_path %></li>
+              <li><%= link_to "プロフィール設定", edit_user_registration_path %></li>
               <li class="active dropdown-header">タスク</li>
               <li><%= link_to "タスク一覧", user_tasks_path(current_user) %></li>
               <li><%= link_to "タスク新規作成", new_user_task_path(current_user) %></li>
