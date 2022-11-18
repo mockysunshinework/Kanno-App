@@ -1,7 +1,7 @@
 <% provide(:title, "Top") %>
 <div class="center jumbotron">
   <h1>かぞくのアプリ</h1>
-  <p>かぞくのアプリは簡易Request依頼ツールと簡易ToDo管理ツールです。</p>
+  <p>かぞくのアプリはユーザーの簡易task管理ツールと、家族内ユーザーのtask依頼管理ツールです。</p>
 
   <% unless user_signed_in? %>
   <%= link_to "アカウント作成", new_user_registration_path, method: :get, class: "btn btn-lg btn-success" %>
